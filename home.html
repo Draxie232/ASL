@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PrizePlay</title>
+  <link rel="stylesheet" href="Home_page.css" />
+</head>
+<body>
+  <!-- Welcome Page -->
+  <section id="welcome-page" class="welcome">
+    <div class="welcome-container">
+      <h1>Welcome to <span class="brand">PrizePlay</span></h1>
+      <p>Play games. Earn rewards. Have fun.</p>
+      <div class="auth-buttons">
+        <button id="loginBtn">Login</button>
+        <button id="signupBtn">Sign Up</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Homepage (hidden by default until login) -->
+  <section id="homepage" class="hidden">
+    <header>
+      <h2>PrizePlay Dashboard</h2>
+      <nav>
+        <ul>
+          <li><a href="#">Games</a></li>
+          <li><a href="#">Rewards</a></li>
+          <li><a href="#">Profile</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <h3>Featured Games</h3>
+      <div class="game-list">
+        <div class="game-card">Game 1</div>
+        <div class="game-card">Game 2</div>
+        <div class="game-card">Game 3</div>
+      </div>
+    </main>
+  </section>
+
+  <script>
+    // Example JS to switch pages after login
+    const loginBtn = document.getElementById("loginBtn");
+    const signupBtn = document.getElementById("signupBtn");
+    const welcomePage = document.getElementById("welcome-page");
+    const homepage = document.getElementById("homepage");
+
+    // In real app -> validate with MongoDB Atlas backend
+    loginBtn.addEventListener("click", () => {
+      welcomePage.classList.add("hidden");
+      homepage.classList.remove("hidden");
+    });
+
+    signupBtn.addEventListener("click", () => {
+      alert("Redirecting to signup page...");
+      // You can redirect to signup.html or handle inline
+    });
+  </script>
+</body>
+</html>
