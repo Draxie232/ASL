@@ -1,129 +1,229 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ASL</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #1e1e2f, #2a2a40);
-      color: white;
-    }
-
-    /* Hide sections */
-    .hidden {
-      display: none;
-    }
-
-    /* Welcome Page */
-    #welcome-page {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      text-align: center;
-    }
-    #welcome-page h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-    }
-    .brand {
-      color: #ffcc00;
-    }
-    .auth-buttons button {
-      margin: 10px;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      background: #ffcc00;
-      color: #1e1e2f;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .auth-buttons button:hover {
-      background: #ffaa00;
-    }
-
-    /* Homepage */
-    header {
-      background: #111;
-      padding: 15px;
-    }
-    header h2 {
-      margin: 0;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-      margin: 10px 0 0 0;
-      padding: 0;
-    }
-    nav ul li a {
-      text-decoration: none;
-      color: white;
-    }
-    main {
-      padding: 20px;
-    }
-    .game-list {
-      display: flex;
-      gap: 20px;
-      margin-top: 20px;
-      flex-wrap: wrap;
-    }
-    .game-card {
-      background: #333;
-      padding: 30px;
-      border-radius: 12px;
-      flex: 1 1 150px;
-      text-align: center;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moksha - Official Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Teko:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #e0e0e0;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .font-teko {
+            font-family: 'Teko', sans-serif;
+        }
+        .hero-bg {
+            /* Updated background image to the one you provided */
+            background-image: linear-gradient(to top, rgba(10, 10, 10, 1) 0%, rgba(10, 10, 10, 0.8) 50%, rgba(10, 10, 10, 0.4) 100%), url('media/images/ruin_photo.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .text-shadow {
+            text-shadow: 0px 0px 15px rgba(153, 27, 27, 0.7), 0px 0px 5px rgba(153, 27, 27, 0.9);
+        }
+        .diya-flicker {
+            animation: flicker 3s infinite alternate;
+        }
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                text-shadow:
+                0 0 4px #991b1b,
+                0 0 11px #991b1b,
+                0 0 19px #b91c1c,
+                0 0 40px #b91c1c,
+                0 0 80px #dc2626;
+            }
+            20%, 24%, 55% {
+                text-shadow: none;
+            }
+        }
+        .section-bg {
+            background-image: linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.9)), url('https://placehold.co/1200x800/1a1a1a/444444?text=Stone+Texture');
+            background-size: cover;
+            background-position: center;
+        }
+        .nav-scrolled {
+            background-color: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        .cta-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(153, 27, 27, 0.5), inset 0 0 5px rgba(153, 27, 27, 0.3);
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(153, 27, 27, 0.8), inset 0 0 10px rgba(153, 27, 27, 0.6);
+        }
+        .feature-card {
+            border: 1px solid rgba(153, 27, 27, 0.2);
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            border-color: rgba(153, 27, 27, 0.7);
+            background-color: rgba(153, 27, 27, 0.05);
+            transform: translateY(-5px);
+        }
+        .gallery-image {
+             filter: grayscale(50%) contrast(1.2);
+             transition: all 0.3s ease;
+        }
+        .gallery-image:hover {
+            filter: grayscale(0%) contrast(1);
+            transform: scale(1.05);
+        }
+    </style>
 </head>
-<body>
-  <!-- Welcome Page -->
-  <section id="welcome-page">
-    <h1>Welcome to <span class="brand">ASL</span></h1>
-    <p>Play games. Earn rewards. Have fun.</p>
-    <div class="auth-buttons">
-      <button id="enterBtn">Enter Site</button>
-    </div>
-  </section>
+<body class="antialiased">
 
-  <!-- Homepage -->
-  <section id="homepage" class="hidden">
-    <header>
-      <h2>ASL Dashboard</h2>
-      <nav>
-        <ul>
-          <li><a href="#">Games</a></li>
-          <li><a href="#">Rewards</a></li>
-          <li><a href="#">Profile</a></li>
-        </ul>
-      </nav>
+    <!-- Header / Navigation -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="font-teko text-4xl tracking-widest text-white">MOKSHA</h1>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#story" class="text-gray-300 hover:text-red-500 transition">THE STORY</a>
+                <a href="#features" class="text-gray-300 hover:text-red-500 transition">FEATURES</a>
+                <a href="#world" class="text-gray-300 hover:text-red-500 transition">THE WORLD</a>
+                <a href="#media" class="text-gray-300 hover:text-red-500 transition">MEDIA</a>
+            </nav>
+            <a href="#" class="hidden md:inline-block bg-transparent border-2 border-red-700 text-red-600 font-bold py-2 px-6 rounded-lg hover:bg-red-700 hover:text-white transition">WISHLIST NOW</a>
+        </div>
     </header>
-    <main>
-      <h3>Featured Games</h3>
-      <div class="game-list">
-        <div class="game-card">Game 1</div>
-        <div class="game-card">Game 2</div>
-        <div class="game-card">Game 3</div>
-        <div class="game-card">Game 4</div>
-      </div>
-    </main>
-  </section>
 
-  <script>
-    // Switch page when "Enter Site" clicked
-    document.getElementById("enterBtn").addEventListener("click", () => {
-      document.getElementById("welcome-page").classList.add("hidden");
-      document.getElementById("homepage").classList.remove("hidden");
-    });
-  </script>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-bg min-h-screen flex items-center justify-center text-center text-white relative overflow-hidden">
+            <div class="z-10 p-6">
+                <h2 class="font-teko text-8xl md:text-9xl lg:text-[12rem] tracking-widest leading-none diya-flicker" style="color: #b91c1c;">MOKSHA</h2>
+                <p class="text-xl md:text-2xl font-light tracking-wider mt-4">Liberation comes at a price.</p>
+                <p class="text-lg md:text-xl font-light tracking-wider mt-2 max-w-2xl mx-auto text-gray-300">Coming Soon to PC and Consoles</p>
+                <a href="#" class="cta-button inline-block mt-10 bg-red-800 text-white font-bold text-lg py-4 px-12 rounded-lg">
+                    WISHLIST ON STEAM
+                </a>
+            </div>
+            <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent"></div>
+        </section>
+
+        <!-- The Story Section -->
+        <section id="story" class="py-20 md:py-32 section-bg">
+            <div class="container mx-auto px-6 text-center max-w-4xl">
+                <h3 class="font-teko text-5xl md:text-6xl tracking-wider text-red-600">A 400-YEAR-OLD CURSE</h3>
+                <div class="w-24 h-1 bg-red-600 mx-auto mt-4 mb-8"></div>
+                <p class="text-lg md:text-xl leading-relaxed text-gray-300">
+                    In the heart of Kashi, an ancient fort stands frozen in time, cursed by a saint centuries ago. Lured by legend, four friends breach its walls, only to find that the curse is real. Death is not an escape. As the lone survivor, you must navigate the suffocating darkness, guided by flickering diyas and haunted by whispers of the past. Your only way out is to attain Moksha—a salvation that demands the ultimate sacrifice.
+                </p>
+            </div>
+        </section>
+
+        <!-- Gameplay Features Section -->
+        <section id="features" class="py-20 md:py-24 bg-[#0a0a0a]">
+            <div class="container mx-auto px-6">
+                <h3 class="font-teko text-5xl md:text-6xl tracking-wider text-center text-red-600">SURVIVE THE NIGHTMARE</h3>
+                <div class="w-24 h-1 bg-red-600 mx-auto mt-4 mb-16"></div>
+                <div class="grid md:grid-cols-3 gap-10">
+                    <!-- Feature 1 -->
+                    <div class="feature-card bg-[#111] p-8 rounded-lg text-center">
+                        <div class="flex justify-center mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.657 7.343A8 8 0 0117.657 18.657z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z" />
+                            </svg>
+                        </div>
+                        <h4 class="font-teko text-3xl tracking-wider mb-3">Flickering Diyas</h4>
+                        <p class="text-gray-400">Light is your sanctuary and your most precious resource. Use sacred diyas to illuminate cryptic clues, ward off unseen horrors, and find your way through the oppressive dark. But be warned—the oil won't last forever.</p>
+                    </div>
+                    <!-- Feature 2 -->
+                    <div class="feature-card bg-[#111] p-8 rounded-lg text-center">
+                        <div class="flex justify-center mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+                               <path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.82m5.84-2.56a6 6 0 016.38 8.12l-4.386-4.158m-1.488-1.488L13.02 3.11a6 6 0 018.12 6.38l-4.158 4.386m-1.488-1.488l-4.386 4.158a6 6 0 01-8.12-6.38 6 6 0 016.38-8.12l4.158 4.386m-5.84 2.56L3.11 13.02a6 6 0 01-1.44-5.04l4.387 4.157" />
+                            </svg>
+                        </div>
+                        <h4 class="font-teko text-3xl tracking-wider mb-3">Whispered Mantras</h4>
+                        <p class="text-gray-400">Sound is your weapon. Decipher and recite ancient mantras to solve esoteric puzzles, pacify lingering spirits, and protect yourself from the wrath of Kaal Bhairav. Every chant could be your last.</p>
+                    </div>
+                    <!-- Feature 3 -->
+                    <div class="feature-card bg-[#111] p-8 rounded-lg text-center">
+                        <div class="flex justify-center mb-6">
+                             <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+                                <path d="M12 2.016c-5.523 0-10 4.477-10 10s4.477 10 10 10 10-4.477 10-10-4.477-10-10-10zm0 18c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8zm-1-13h2v6h-2v-6zm0 8h2v2h-2v-2z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="font-teko text-3xl tracking-wider mb-3">Cryptic Puzzles</h4>
+                        <p class="text-gray-400">The fort's history is written in its walls. Solve logic challenges, decode ancient scripts, and navigate riddles rooted in Indian mythology. Your intellect is your sharpest tool against a divine, ancient power.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The World Section -->
+        <section id="world" class="min-h-[70vh] flex items-center relative section-bg">
+             <div class="absolute inset-0 bg-black/70"></div>
+            <div class="container mx-auto px-6 text-center z-10">
+                <h3 class="font-teko text-5xl md:text-6xl tracking-wider text-red-600">FACE THE GAZE OF KAAL BHAIRAV</h3>
+                <p class="text-lg md:text-xl leading-relaxed text-gray-300 max-w-4xl mx-auto mt-6">
+                    Kashi, the city of light, holds deep shadows. The cursed fort is a realm outside of time, a personal hell where Kaal Bhairav, the fierce aspect of Shiva, is the ultimate guardian. He is not a monster to be fought, but a divine wrath to be understood. His presence warps reality, and every shadow could be his judgment.
+                </p>
+            </div>
+        </section>
+        
+        <!-- Media Section -->
+        <section id="media" class="py-20 md:py-24 bg-[#0a0a0a]">
+            <div class="container mx-auto px-6">
+                <h3 class="font-teko text-5xl md:text-6xl tracking-wider text-center text-red-600">GLIMPSE THE HORROR</h3>
+                <div class="w-24 h-1 bg-red-600 mx-auto mt-4 mb-16"></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <img src="https://placehold.co/600x400/0a0a0a/b91c1c?text=A+Dark+Corridor" alt="Screenshot 1" class="gallery-image w-full h-auto rounded-lg cursor-pointer">
+                    <img src="https://placehold.co/600x400/0a0a0a/b91c1c?text=Puzzle+on+Stone+Wall" alt="Screenshot 2" class="gallery-image w-full h-auto rounded-lg cursor-pointer">
+                    <img src="https://placehold.co/600x400/0a0a0a/b91c1c?text=Flickering+Diya" alt="Screenshot 3" class="gallery-image w-full h-auto rounded-lg cursor-pointer">
+                    <img src="https://placehold.co/600x400/0a0a0a/b91c1c?text=Ancient+Script" alt="Screenshot 4" class="gallery-image w-full h-auto rounded-lg cursor-pointer">
+                    <img src="https://placehold.co/600x400/0a0a0a/b91c1c?text=Shadowy+Figure" alt="Screenshot 5" class="gallery-image w-full h-auto rounded-lg cursor-pointer">
+                    <img src="https://placehold.co/600x400/0a0a0a/b91c1c?text=View+of+the+Fort" alt="Screenshot 6" class="gallery-image w-full h-auto rounded-lg cursor-pointer">
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section id="newsletter" class="py-20 md:py-32 section-bg">
+            <div class="container mx-auto px-6 text-center max-w-2xl">
+                <h3 class="font-teko text-5xl md:text-6xl tracking-wider text-red-600">STAY IN THE LIGHT</h3>
+                <p class="text-lg text-gray-300 mt-4 mb-8">Subscribe to our newsletter for updates, exclusive content, and release date announcements. Don't get left in the dark.</p>
+                <form class="flex flex-col md:flex-row gap-4 max-w-lg mx-auto">
+                    <input type="email" placeholder="Enter your email" class="w-full bg-gray-900 border border-gray-700 text-white px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600">
+                    <button type="submit" class="cta-button bg-red-700 text-white font-bold py-3 px-8 rounded-lg">Subscribe</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black py-10">
+        <div class="container mx-auto px-6 text-center text-gray-500">
+            <div class="flex justify-center space-x-6 mb-6">
+                 <!-- Social Icons -->
+            </div>
+            <p>&copy; 2024 Your Game Studio. All Rights Reserved.</p>
+            <p class="text-sm mt-2">"Moksha" and the Moksha logo are trademarks of Your Game Studio.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script to handle navbar background on scroll
+        const navbar = document.getElementById('navbar');
+        window.onscroll = function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-scrolled');
+            } else {
+                navbar.classList.remove('nav-scrolled');
+            }
+        };
+    </script>
 </body>
 </html>
+
